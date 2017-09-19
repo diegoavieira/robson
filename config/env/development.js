@@ -2,7 +2,7 @@ module.exports = {
 	db: {
 		database: 'robson',
 		username: 'postgres',
-		password: '12345',
+		password: '123456',
 		params: {
 			dialect: 'postgres',
 			define: {
