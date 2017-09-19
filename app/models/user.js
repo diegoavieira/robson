@@ -12,15 +12,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TEXT,
       allowNull: false
     },
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true
-    },
-    phone: {
-      type: DataTypes.STRING,
-      allowNull: true
-    },
     login: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -32,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {
 		schema: 'public',
-    tableName:"user",
+    tableName: 'user',
 		hooks: {
 			beforeCreate: user => {
 				const salt = bcrypt.genSaltSync();
