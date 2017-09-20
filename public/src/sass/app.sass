@@ -1,8 +1,37 @@
-$family-primary: 'Ubuntu', sans-serif;
+$family-primary: "Roboto", sans-serif;
+$grey-darker: #383838;
+$text: $grey-darker;
+$mediaMobile: 'screen and (max-width: 768px)';
+$mediaSmall: 'screen and (max-width: 425px)';
+$mediaSmallMedium: 'screen and (max-width: 736px)';
+$mediaTablet: 'screen and (min-width: 769px) and (max-width: 1007px)';
+$mediaDesktop: 'screen and (min-width: 1365px)';
+$primary: #336666;
+$primary-invert: #6c9696;
+$link-hover: $primary-invert;
 
 @import "./node_modules/bulma/bulma";
 
 html
   overflow-y: auto;
+  background: $white-ter;
 
+.flex-wrap-center-between
+	display: flex;
+	flex-flow: row wrap;
+	align-items: center;
+	justify-content: space-between;
 
+.nav-top
+	padding: 0.5rem 0;
+	background-color: $primary;
+	.container
+		@extend .flex-wrap-center-between;
+	img
+		max-height: 2rem;
+	a
+		color: #fff;
+		&:hover
+			color: $primary-invert;
+	@media #{$mediaMobile}
+		padding: 0.5rem 0.8rem;

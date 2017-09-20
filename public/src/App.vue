@@ -1,14 +1,17 @@
 <template>
-  <div class="main">
-  	teste
-  </div>
+  <section>
+  	<NavBar></NavBar>
+  </section>
 </template>
 
 <script>
   import {mapGetters, mapActions} from 'vuex';
+  import NavBar from './components/NavBar.vue';
 
   export default {
-
+    components: {
+      NavBar
+    }
   }
 </script>
 
