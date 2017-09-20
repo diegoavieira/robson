@@ -4,13 +4,13 @@ import {models as Models} from '../../config/database';
 
 exports.signup = (req, res) => {
   const params = req.body;
-  Models.user.findOne({
+  Models.Users.findOne({
     where: {login: params.login}
   }).then(user => {
     if (user) {
       res.json({success: false, message: 'Email already registered.'})
     } else {
-      Models.user.create(params).then(result => {
+      Models.Users.create(params).then(result => {
         res.json({success: true, message: 'User created successfully.'})
       }).catch(error => {
         res.status(412).json({success: false, message: error.message});
@@ -23,13 +23,13 @@ exports.signup = (req, res) => {
 
 exports.login = (req, res) => {
   const params = req.body;
-  Models.user.findOne({
+  Models.Users.findOne({
     where: {login: params.login}
   }).then(user => {
     if (!user) {
       res.json({success: false, message: 'User not found.'})
     } else if (user) {
-      if (Models.user.isPassword(user.password, params.password)) {
+      if (Models.Users.isPassword(user.password, params.password)) {
         const payload = {
           login: user.login,
           password: user.password
@@ -48,7 +48,7 @@ exports.login = (req, res) => {
 };
 
 exports.getUsers = (req, res) => {
-  Models.user.findAll({
+  Models.Users.findAll({
     attributes: {exclude: ['password']},
     order: [['user_id', 'ASC']]
   }).then(result => {

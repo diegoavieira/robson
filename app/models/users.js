@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt';
 
 module.exports = (sequelize, DataTypes) => {
-	const user = sequelize.define('user', {
+	const Users = sequelize.define('Users', {
     user_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {
 		schema: 'public',
-    tableName: 'user',
+    tableName: 'users',
 		hooks: {
 			beforeCreate: user => {
 				const salt = bcrypt.genSaltSync();
@@ -35,8 +35,8 @@ module.exports = (sequelize, DataTypes) => {
 			}
 		}
 	});
-    user.isPassword = (encodedPassword, password) => {
+    Users.isPassword = (encodedPassword, password) => {
 		return bcrypt.compareSync(password, encodedPassword);
 	};
-	return user;
+	return Users;
 };
