@@ -1,20 +1,36 @@
-$family-primary: "Roboto", sans-serif;
-$grey-darker: #383838;
-$text: $grey-darker;
+$family-primary: "Sans", sans-serif;
+$primary: #336666;
+$primary-invert: #fff;
+$success: #507642;
+$info: #336699;
+$danger: #CC3300;
+$warning: #FF9900;
+$link-hover: $primary-invert;
+
 $mediaMobile: 'screen and (max-width: 768px)';
 $mediaSmall: 'screen and (max-width: 425px)';
 $mediaSmallMedium: 'screen and (max-width: 736px)';
 $mediaTablet: 'screen and (min-width: 769px) and (max-width: 1007px)';
-$mediaDesktop: 'screen and (min-width: 1365px)';
-$primary: #336666;
-$primary-invert: #6c9696;
-$link-hover: $primary-invert;
+$mediaDesktop: 'screen and (max-width: 1024px)';
 
 @import "./node_modules/bulma/bulma";
 
 html
   overflow-y: auto;
   background: $white-ter;
+  font-size: 18px;
+
+form
+	width: 100%;
+
+.container
+	@media #{$mediaDesktop}
+		padding: 0 0.8em;
+
+.button.is-warning
+	color: #fff;
+	&:hover, &:active, &:focus
+		color: #fff;
 
 .flex-wrap-center-between
 	display: flex;
@@ -22,9 +38,10 @@ html
 	align-items: center;
 	justify-content: space-between;
 
-.nav-top
+.top-bar
 	padding: 0.5rem 0;
 	background-color: $primary;
+	margin-bottom: 1.5rem;
 	.container
 		@extend .flex-wrap-center-between;
 	img
@@ -34,4 +51,34 @@ html
 		&:hover
 			color: $primary-invert;
 	@media #{$mediaMobile}
-		padding: 0.5rem 0.8rem;
+		margin-bottom: 0.8rem;
+
+.tabs
+	@media #{$mediaSmall}
+		li
+			flex-grow: 1;
+		a
+			flex-direction: column;
+			font-size: 12px;
+			padding: 0.5rem 0;
+		.icon
+			font-size: 1.5em;
+			height: inherit;
+			width: inherit;
+			margin-bottom: 0.2rem;
+		.icon:first-child
+			margin-right: 0;
+	
+.tabs:not(:last-child)
+	margin-bottom: 0;
+
+.tabs-content
+	background-color: #fff;
+	border: 1px solid $grey-lighter;
+	border-top: none;
+	padding: 1rem;
+	@media #{$mediaMobile}
+		padding: 0.8rem;
+
+.login
+	margin-top: 3rem;

@@ -1,23 +1,26 @@
 <template>
-  <div class="columns is-centered">
-    <div class="login column is-one-quarter">
-      <!-- <img src="../assets/logo-gim.svg"> -->
+  <div class="columns is-centered login">
+    <div class="column is-one-quarter-desktop is-one-quarter-tablet">
       <form>
         <div class="field">
+          <label>Login</label>
           <div class="control">
-            <input type="text" name="login" class="input is-medium" v-model="creds.login" placeholder="Login">
+            <input type="text" name="login" class="input" v-model="credsLogin.login" @focus="closeMessageBack" :class="{'is-danger': errors.has('login')}" v-validate="'required'">
+            <p v-if="errors.has('login')" class="help is-danger">{{errors.first('login')}}</p>
+          </div>
+        </div>
+        <div class="field">
+          <label>Senha</label>
+          <div class="control">
+            <input type="password" name="senha" class="input" v-model="credsLogin.password" @focus="closeMessageBack" :class="{'is-danger': errors.has('senha')}" v-validate="'required'">
+            <p v-if="errors.has('senha')" class="help is-danger">{{errors.first('senha')}}</p>
           </div>
         </div>
         <div class="field">
           <div class="control">
-            <input type="password" name="password" class="input is-medium" v-model="creds.password" placeholder="Senha">
+            <button class="button is-success is-fullwidth" v-on:click.stop.prevent="login($validator)">Entrar</button>
           </div>
-        </div>
-        <div class="field">
-          <div class="control">
-            <button class="button is-primary is-medium is-fullwidth" v-on:click.stop.prevent="login()">Entrar</button>
-          </div>
-          <!-- <p v-if="messageBack" class="help is-danger">{{messageBack}}</p> -->
+          <p v-if="messageBack" class="help is-danger">{{messageBack}}</p>
         </div>
       </form>
     </div>
@@ -28,15 +31,20 @@
   import {mapGetters, mapActions} from 'vuex';
 	
   export default {
-    computed: mapGetters({
-      creds: 'creds',
-    }),
     created() {
-      this.$store.dispatch('clearCreds');
+      this.$store.dispatch('clearCredsLogin');
     },
-    methods: mapActions([
-      'login',
-      'clearCreds'
-    ])
-	};
+    computed: {
+      ...mapGetters({
+        credsLogin: 'credsLogin',
+        messageBack: 'messageBack'
+      })
+    },
+    methods: {
+      ...mapActions([
+       'login',
+       'closeMessageBack'
+      ]),
+    }
+	}
 </script>

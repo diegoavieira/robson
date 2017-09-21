@@ -8,4 +8,7 @@ export default {
 	signup(data) {
 		return Axios.post('/signup', data)
 	},
+	logout(data) {
+		return Axios.get('/logout')
+	},
 };
