@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
-	const Tickets = sequelize.define('Tickets', {
-    ticket_id: {
+	const CashReceipts = sequelize.define('CashReceipts', {
+    cashReceipts_id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true
@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   },{
   	schema: 'public',
-    tableName: 'tickets'
+    tableName: 'cashReceipts'
   });
-	return Tickets;
+	return CashReceipts;
 };
