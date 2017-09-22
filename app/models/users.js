@@ -35,7 +35,7 @@ module.exports = (sequelize, DataTypes) => {
 			}
 		}
 	});
-    Users.isPassword = (encodedPassword, password) => {
+  Users.isPassword = (encodedPassword, password) => {
 		return bcrypt.compareSync(password, encodedPassword);
 	};
 	return Users;
