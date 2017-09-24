@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <div class="main">
   	<TopBar></TopBar>
     <div class="container">
       <NavTab v-if="isLogged"></NavTab>
@@ -7,7 +7,7 @@
         <router-view></router-view>
       </div>
     </div>
-  </section>
+  </div>
 </template>
 
 <script>

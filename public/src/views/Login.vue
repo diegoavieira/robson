@@ -1,16 +1,16 @@
 <template>
-  <div class="columns is-centered login">
+  <div class="columns is-centered">
     <div class="column is-one-quarter-desktop is-one-quarter-tablet">
       <form>
         <div class="field">
-          <label>Login</label>
+          <label class="label">Login</label>
           <div class="control">
             <input type="text" name="login" class="input" v-model="credsLogin.login" @focus="closeMessageBack" :class="{'is-danger': errors.has('login')}" v-validate="'required'">
             <p v-if="errors.has('login')" class="help is-danger">{{errors.first('login')}}</p>
           </div>
         </div>
         <div class="field">
-          <label>Senha</label>
+          <label class="label">Senha</label>
           <div class="control">
             <input type="password" name="senha" class="input" v-model="credsLogin.password" @focus="closeMessageBack" :class="{'is-danger': errors.has('senha')}" v-validate="'required'">
             <p v-if="errors.has('senha')" class="help is-danger">{{errors.first('senha')}}</p>

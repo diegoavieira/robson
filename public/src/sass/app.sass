@@ -1,10 +1,10 @@
-$family-primary: "Sans", sans-serif;
-$primary: #336666;
+$family-primary: "Ubuntu", sans-serif;
+$primary: #284a4a;
 $primary-invert: #fff;
 $success: #507642;
 $info: #336699;
-$danger: #CC3300;
-$warning: #FF9900;
+$danger: #bd3333;
+$warning: #F17022;
 $link-hover: $primary-invert;
 
 $mediaMobile: 'screen and (max-width: 768px)';
@@ -16,16 +16,25 @@ $mediaDesktop: 'screen and (max-width: 1024px)';
 @import "./node_modules/bulma/bulma";
 
 html
-  overflow-y: auto;
   background: $white-ter;
   font-size: 18px;
+  @media #{$mediaMobile}
+		font-size: 16px;
+
+body
+	line-height: 1;
 
 form
 	width: 100%;
 
+.main
+	padding: 0 0 1.5rem 0;
+	@media #{$mediaMobile}
+		margin-bottom: 1rem;
+
 .container
 	@media #{$mediaDesktop}
-		padding: 0 0.8em;
+		padding: 0 1rem;
 
 .button.is-warning
 	color: #fff;
@@ -51,7 +60,7 @@ form
 		&:hover
 			color: $primary-invert;
 	@media #{$mediaMobile}
-		margin-bottom: 0.8rem;
+		margin-bottom: 1rem;
 
 .tabs
 	@media #{$mediaSmall}
@@ -62,7 +71,7 @@ form
 			font-size: 12px;
 			padding: 0.5rem 0;
 		.icon
-			font-size: 1.5em;
+			font-size: 1.3rem;
 			height: inherit;
 			width: inherit;
 			margin-bottom: 0.2rem;
@@ -76,9 +85,31 @@ form
 	background-color: #fff;
 	border: 1px solid $grey-lighter;
 	border-top: none;
-	padding: 1rem;
+	padding: 1.5rem;
 	@media #{$mediaMobile}
-		padding: 0.8rem;
+		padding: 1rem;
 
-.login
-	margin-top: 3rem;
+.cash-register
+	.notification
+		padding: 1rem;
+		width: 100%;
+		border: 1px solid $grey-lighter;
+		@extend .flex-wrap-center-between;
+
+.label
+	color: inherit;
+	font-weight: inherit;
+
+.panel-open
+	border-radius: 3px 3px 0 0;
+
+.panel-block
+	padding: 0.75rem;
+
+.field-flex
+	@extend .flex-wrap-center-between
+	margin: 0 -0.75em -0.75em 0;
+	.field
+		flex-grow: 1;
+		margin: 0 0.75em 0.75em 0;
+

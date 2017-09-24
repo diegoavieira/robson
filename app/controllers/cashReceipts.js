@@ -14,7 +14,7 @@ exports.getCashReceipts = (req, res) => {
     where: {
       date: {$gte: parms.dateInit, $lte: parms.dateEnd}
     },
-    order: [['date', 'ASC']]
+    order: [['date', 'DESC']]
   }).then(result => {
     if (result.length) {
       res.status(201).json({success: true, data: result});
