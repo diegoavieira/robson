@@ -22,7 +22,7 @@ html
 		font-size: 16px;
 
 body
-	line-height: 1;
+	line-height: 1.2;
 
 form
 	width: 100%;
@@ -91,10 +91,10 @@ form
 
 .cash-register
 	.notification
-		padding: 1rem;
+		@extend .flex-wrap-center-between;
+		padding: 0.7rem 1rem;
 		width: 100%;
 		border: 1px solid $grey-lighter;
-		@extend .flex-wrap-center-between;
 
 .label
 	color: inherit;

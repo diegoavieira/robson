@@ -11,4 +11,7 @@ export default {
 	logout(data) {
 		return Axios.get('/logout')
 	},
+	createCashReceipt(data) {
+		return Axios.post('/createCashReceipt', data)
+	},
 };
