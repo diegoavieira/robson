@@ -35,17 +35,16 @@ Vue.filter('date', value => {
   return Moment(value).format('DD/MM/YYYY');
 });
 
-Vue.directive('maskDate', {
+Vue.directive('myMask', {
   bind(el, binding) {
-    let maskOpts = {
-    	showMaskOnFocus: false,
-    	showMaskOnHover: false,
-    	positionCaretOnClick: 'none',
+    let mask = {
+      mask: binding.value,
+      showMaskOnFocus: false,
+      showMaskOnHover: false,
+      clearIncomplete: true,
+      positionCaretOnClick: 'none',
     };
-    InputMask('99/99/9999', maskOpts).mask(el);
-  },
-  unbind(el) {
-    InputMask.remove(el);
+    InputMask(mask).mask(el);
   }
 });
 

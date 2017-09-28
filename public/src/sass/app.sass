@@ -4,7 +4,8 @@ $primary-invert: #fff;
 $success: #507642;
 $info: #336699;
 $danger: #bd3333;
-$warning: #F17022;
+$warning: #e4823d;
+$dark: #ad6c89;
 $link-hover: $primary-invert;
 
 $mediaMobile: 'screen and (max-width: 768px)';
@@ -26,6 +27,28 @@ body
 
 form
 	width: 100%;
+
+p
+	margin-bottom: 0.5rem;
+
+th, strong 
+	font-weight: 500;
+
+.table
+	margin-bottom: 0;
+	th, td 
+		vertical-align: middle;
+	thead
+		th, td
+			color: inherit;
+			padding-top: 0;
+			font-weight: inherit;
+		tr
+			&:hover
+				background-color: transparent;
+
+.textarea
+	resize: none;
 
 .main
 	padding: 0 0 1.5rem 0;
@@ -75,6 +98,7 @@ form
 			height: inherit;
 			width: inherit;
 			margin-bottom: 0.2rem;
+			border-radius: 0 3px 3px 3px;
 		.icon:first-child
 			margin-right: 0;
 	
@@ -89,22 +113,14 @@ form
 	@media #{$mediaMobile}
 		padding: 1rem;
 
-.cash-register
-	.notification
-		@extend .flex-wrap-center-between;
-		padding: 0.7rem 1rem;
-		width: 100%;
-		border: 1px solid $grey-lighter;
+.panel-block
+	padding: 0.75rem;
+	&:last-child
+		border-radius: 0 0 3px 3px;
 
 .label
 	color: inherit;
 	font-weight: inherit;
-
-.panel-open
-	border-radius: 3px 3px 0 0;
-
-.panel-block
-	padding: 0.75rem;
 
 .field-flex
 	@extend .flex-wrap-center-between
@@ -113,3 +129,22 @@ form
 		flex-grow: 1;
 		margin: 0 0.75em 0.75em 0;
 
+.is-flex
+	@extend .flex-wrap-center-between;
+
+.cash-resume
+	padding: 0.5rem 0.75rem;
+	background-color: $white-ter;
+	border: 1px solid $grey-lighter;
+	border-radius: 3px;
+	@media #{$mediaMobile}
+		span
+			width: 100%;
+			margin-bottom: 0.5rem;
+			&:last-child
+				order: -2;
+
+	.total 
+		font-size: 1.5rem;
+		@media #{$mediaMobile}
+			margin: 0;

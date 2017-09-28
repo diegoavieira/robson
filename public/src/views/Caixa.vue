@@ -1,15 +1,19 @@
 <template>
   <div class="cash-register">
-    <FinancialBalance></FinancialBalance>
+    <div class="columns">
+      <div class="column">
+        <CashResume></CashResume>
+      </div>
+    </div>
     <div class="columns">
       <div class="column">
         <CashReceipts></CashReceipts>
       </div>
       <div class="column">
-        
+        <CashOutflow></CashOutflow>
       </div>
       <div class="column">
-        
+        <CashExtract></CashExtract>
       </div>
     </div>
   </div>
@@ -17,12 +21,14 @@
 
 <script>
   import {mapGetters, mapActions} from 'vuex';
-  import FinancialBalance from '../components/FinancialBalance.vue';
   import CashReceipts from '../components/CashReceipts.vue';
+  import CashOutflow from '../components/CashOutflow.vue';
+  import CashExtract from '../components/CashExtract.vue';
+  import CashResume from '../components/CashResume.vue';
 	
   export default {
     components: {
-      FinancialBalance, CashReceipts
+      CashReceipts, CashOutflow, CashExtract, CashResume
     },
     computed: {
 			...mapGetters({
