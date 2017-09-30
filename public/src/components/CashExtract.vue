@@ -19,17 +19,10 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="has-text-dark">
-            <td>R$ 15,45 <i class="fa fa-level-down"></i></td>
-            <td>Pagamento da luz</td>
-          </tr>
-          <tr class="has-text-dark">
-            <td>R$ 15,45 <i class="fa fa-level-down"></i></td>
-            <td>Pagamento da luz</td>
-          </tr>
-          <tr class="has-text-info">
-            <td>R$ 15,45 <i class="fa fa-level-up"></i></td>
-            <td>Solda básica</td>
+          <tr v-for="cash in listCashExtract">
+            <td class="has-text-info" v-if="cash.cashType == 'receipt'">{{cash.value | reais}} <i class="fa fa-level-up"></i></td>
+            <td class="has-text-dark" v-else>{{cash.value | reais}} <i class="fa fa-level-down"></i></td>
+            <td>{{cash.description}}</td>
           </tr>
         </tbody>
       </table>
@@ -41,14 +34,17 @@
   import {mapGetters, mapActions} from 'vuex';
 	
   export default {
+    mounted() {
+      this.getCashExtract();
+    },
     computed: {
 			...mapGetters({
-
+        listCashExtract: 'listCashExtract'
 	    })
 		},
     methods: {
 	    ...mapActions([
-
+        'getCashExtract'
 	    ]),
     }
 	}

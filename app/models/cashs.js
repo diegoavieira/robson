@@ -1,9 +1,13 @@
 module.exports = (sequelize, DataTypes) => {
-	const CashOutflows = sequelize.define('CashOutflows', {
-    cashOutflows_id: {
+	const Cashs = sequelize.define('Cashs', {
+    cashs_id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true
+    },
+    cashType: {
+      type: DataTypes.ENUM('receipt', 'outflow'),
+      allowNull: false
     },
     date: {
       type: DataTypes.DATE,
@@ -19,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   },{
   	schema: 'public',
-    tableName: 'cashOutflows'
+    tableName: 'cashs'
   });
-	return CashOutflows;
+	return Cashs;
 };

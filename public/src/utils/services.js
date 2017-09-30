@@ -11,10 +11,16 @@ export default {
 	logout(data) {
 		return Axios.get('/logout');
 	},
-	createCashReceipt(data) {
-		return Axios.post('/createCashReceipt', data);
+	createCash(data) {
+		return Axios.post('/createCash', data);
 	},
-	createCashOutflow(data) {
-		return Axios.post('/createCashOutflow', data);
+	getCashReceipts(data) {
+		return Axios.post('/getCashReceipts', data);
+	},
+	getCashOutflows(data) {
+		return Axios.post('/getCashOutflows', data);
+	},
+	getCashExtract(data) {
+		return Axios.post('/getCashExtract', data);
 	}
 };

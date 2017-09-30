@@ -3,26 +3,30 @@ import Services from '../../utils/services';
 import store from '../';
 
 const state = {
-  newCashReceipt: {}
+  newCashReceipt: {},
+  listCashReceipts: []
 };
 
 const getters = {
   newCashReceipt: (state) => {
     return state.newCashReceipt
+  },
+  listCashReceipts: (state) => {
+    return state.listCashReceipts
   }
 };
 
 const actions = {
   createCashReceipt({commit, state}, $validator) {
-    console.log(state.newCashReceipt)
     $validator.validateAll().then(result => {
       if (result) {
         let parms = state.newCashReceipt;
         parms.date = Moment(parms.date, 'DD/MM/YYYY').format();
-        Services.createCashReceipt(parms).then(result => {
+        parms.cashType = 'receipt';
+        Services.createCash(parms).then(result => {
           if (result.data.success) {
-            console.log(result.data.data)
             store.dispatch('clearCashReceipt');
+            store.dispatch('getCashExtract');
           } else {
             commit(types.MESSAGE_BACK, {messageBack: result.data.message});
           };
@@ -35,13 +39,34 @@ const actions = {
       errors.clear();
     };
     commit(types.MESSAGE_BACK, {messageBack: false});
-    commit(types.NEW_CASH_RECEIPT, {newCashReceipt: {}});
+    commit(types.NEW_CASH_RECEIPT_CLEAR, {newCashReceipt: {}});
+    store.dispatch('setDateCashReceipt');
+  },
+  setDateCashReceipt({commit, state}) {
+    commit(types.NEW_CASH_RECEIPT, {newCashReceipt: {date: Moment().format('DD/MM/YYYY')}});
+  },
+  getCashReceipts({commit, state}, payload) {
+    let parms = payload;
+    Services.getCashReceipts(parms).then(result => {
+      if (result.data.success) {
+        commit(types.LIST_CASH_RECEIPT, {listCashReceipts: result.data.data})
+      } else {
+        commit(types.MESSAGE_BACK, {messageBack: result.data.message});
+      };
+     
+    })
   }
 };
 
 const mutations = {
   [types.NEW_CASH_RECEIPT] (state, {newCashReceipt}) {
+    Object.assign(state.newCashReceipt, newCashReceipt)
+  },
+  [types.NEW_CASH_RECEIPT_CLEAR] (state, {newCashReceipt}) {
     state.newCashReceipt = newCashReceipt;
+  },
+  [types.LIST_CASH_RECEIPT] (state, {listCashReceipts}) {
+    state.listCashReceipts = listCashReceipts;
   }
 };
 

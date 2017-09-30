@@ -54,6 +54,10 @@
   import {mapGetters, mapActions} from 'vuex';
 	
   export default {
+    mounted() {
+      this.setDateCashOutflow();
+      this.getCashOutflows();
+    },
     computed: {
 			...mapGetters({
 				newCashOutflow: 'newCashOutflow',
@@ -62,7 +66,9 @@
     methods: {
 	    ...mapActions([
         'createCashOutflow',
-        'clearCashOutflow'
+        'clearCashOutflow',
+        'setDateCashOutflow',
+        'getCashOutflows'
 	    ]),
     }
 	}

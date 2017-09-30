@@ -54,6 +54,10 @@
   import {mapGetters, mapActions} from 'vuex';
 	
   export default {
+    mounted() {
+      this.setDateCashReceipt();
+      this.getCashReceipts();
+    },
     computed: {
 			...mapGetters({
 				newCashReceipt: 'newCashReceipt',
@@ -62,7 +66,9 @@
     methods: {
 	    ...mapActions([
         'createCashReceipt',
-        'clearCashReceipt'
+        'clearCashReceipt',
+        'setDateCashReceipt',
+        'getCashReceipts'
 	    ]),
     }
 	}

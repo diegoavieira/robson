@@ -10,7 +10,7 @@
         <CashReceipts></CashReceipts>
       </div>
       <div class="column">
-        <CashOutflow></CashOutflow>
+        <CashOutflows></CashOutflows>
       </div>
       <div class="column">
         <CashExtract></CashExtract>
@@ -22,13 +22,13 @@
 <script>
   import {mapGetters, mapActions} from 'vuex';
   import CashReceipts from '../components/CashReceipts.vue';
-  import CashOutflow from '../components/CashOutflow.vue';
+  import CashOutflows from '../components/CashOutflows.vue';
   import CashExtract from '../components/CashExtract.vue';
   import CashResume from '../components/CashResume.vue';
 	
   export default {
     components: {
-      CashReceipts, CashOutflow, CashExtract, CashResume
+      CashReceipts, CashOutflows, CashExtract, CashResume
     },
     computed: {
 			...mapGetters({
