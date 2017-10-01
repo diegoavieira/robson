@@ -4,7 +4,7 @@ import store from '../';
 
 const state = {
   newCashReceipt: {},
-  listCashReceipts: []
+  listCashReceipts: {}
 };
 
 const getters = {
@@ -26,7 +26,9 @@ const actions = {
         Services.createCash(parms).then(result => {
           if (result.data.success) {
             store.dispatch('clearCashReceipt');
+            store.dispatch('getCashReceipts');
             store.dispatch('getCashExtract');
+            store.dispatch('getCashTotal');
           } else {
             commit(types.MESSAGE_BACK, {messageBack: result.data.message});
           };
@@ -46,14 +48,18 @@ const actions = {
     commit(types.NEW_CASH_RECEIPT, {newCashReceipt: {date: Moment().format('DD/MM/YYYY')}});
   },
   getCashReceipts({commit, state}, payload) {
-    let parms = payload;
+    let parms;
+    if (payload) {
+      parms = payload;
+    } else {
+      parms = {dateInit: Moment().startOf('day'), dateEnd: Moment().endOf('day')}
+    }
     Services.getCashReceipts(parms).then(result => {
       if (result.data.success) {
-        commit(types.LIST_CASH_RECEIPT, {listCashReceipts: result.data.data})
+        commit(types.LIST_CASH_RECEIPT, {listCashReceipts: result.data});
       } else {
-        commit(types.MESSAGE_BACK, {messageBack: result.data.message});
+        commit(types.LIST_CASH_RECEIPT, {listCashReceipts: result.data})
       };
-     
     })
   }
 };

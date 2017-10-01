@@ -8,7 +8,7 @@
     </div>
     <div class="panel-block is-flex">
       <span>Total líquido de hoje</span>
-      <span class="subtitle is-4 has-text-warning">R$ 52,10</span>
+      <span class="subtitle is-4 has-text-warning">{{cashExtract.totalLiquid | reais}}</span>
     </div>
     <div class="panel-block">
       <table class="table is-fullwidth is-striped">
@@ -39,7 +39,8 @@
     },
     computed: {
 			...mapGetters({
-        listCashExtract: 'listCashExtract'
+        cashExtract: 'cashExtract',
+        listCashExtract: 'listCashExtract',
 	    })
 		},
     methods: {

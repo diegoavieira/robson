@@ -8,7 +8,7 @@
     </div>
     <div class="panel-block is-flex">
       <span>Total de hoje</span>
-      <span class="subtitle is-4 has-text-info">R$ 52,10</span>
+      <span class="subtitle is-4 has-text-info">{{listCashReceipts.total | reais}}</span>
     </div>
     <div class="panel-block">
       <form>
@@ -61,6 +61,7 @@
     computed: {
 			...mapGetters({
 				newCashReceipt: 'newCashReceipt',
+        listCashReceipts: 'listCashReceipts'
 	    })
 		},
     methods: {

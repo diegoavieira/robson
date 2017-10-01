@@ -3,13 +3,20 @@ import Services from '../../utils/services';
 import store from '../';
 
 const state = {
-  listCashExtract: []
+  cashExtract: {},
+  cashTotal: {}
 };
 
 const getters = {
+  cashExtract: (state) => {
+    return state.cashExtract;
+  },
   listCashExtract: (state) => {
-    return _.orderBy(state.listCashExtract, ['cashs_id'], ['desc']);
-  }
+    return _.orderBy(state.cashExtract.data, ['cashs_id'], ['desc']);
+  },
+  cashTotal: (state) => {
+    return state.cashTotal;
+  },
 };
 
 const actions = {
@@ -22,19 +29,29 @@ const actions = {
     }
     Services.getCashExtract(parms).then(result => {
       if (result.data.success) {
-        commit(types.LIST_CASH_EXTRACT, {listCashExtract: result.data.data})
-        console.log(state.listCashExtract)
+        commit(types.CASH_EXTRACT, {cashExtract: result.data});
       } else {
-        commit(types.MESSAGE_BACK, {messageBack: result.data.message});
+        commit(types.CASH_EXTRACT, {cashExtract: result.data});
       };
-     
+    });
+  },
+  getCashTotal({commit, state}) {
+    Services.getCashTotal().then(result => {
+      if (result.data.success) {
+        commit(types.CASH_TOTAL, {cashTotal: result.data});
+      } else {
+        commit(types.CASH_TOTAL, {cashTotal: result.data});
+      };
     })
   }
 };
 
 const mutations = {
-  [types.LIST_CASH_EXTRACT] (state, {listCashExtract}) {
-    state.listCashExtract = listCashExtract;
+  [types.CASH_EXTRACT] (state, {cashExtract}) {
+    state.cashExtract = cashExtract;
+  },
+  [types.CASH_TOTAL] (state, {cashTotal}) {
+    state.cashTotal = cashTotal;
   }
 };
 

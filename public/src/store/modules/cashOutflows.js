@@ -4,7 +4,7 @@ import store from '../';
 
 const state = {
   newCashOutflow: {},
-  listCashOutflows: []
+  listCashOutflows: {}
 };
 
 const getters = {
@@ -26,7 +26,9 @@ const actions = {
         Services.createCash(parms).then(result => {
           if (result.data.success) {
             store.dispatch('clearCashOutflow');
+            store.dispatch('getCashOutflows');
             store.dispatch('getCashExtract');
+            store.dispatch('getCashTotal');
           } else {
             commit(types.MESSAGE_BACK, {messageBack: result.data.message});
           };
@@ -46,12 +48,17 @@ const actions = {
     commit(types.NEW_CASH_OUTFLOW, {newCashOutflow: {date: Moment().format('DD/MM/YYYY')}});
   },
   getCashOutflows({commit, state}, payload) {
-    let parms = payload;
+    let parms;
+    if (payload) {
+      parms = payload;
+    } else {
+      parms = {dateInit: Moment().startOf('day'), dateEnd: Moment().endOf('day')}
+    }
     Services.getCashOutflows(parms).then(result => {
       if (result.data.success) {
-        commit(types.LIST_CASH_OUTFLOW, {listCashOutflows: result.data.data})
+        commit(types.LIST_CASH_OUTFLOW, {listCashOutflows: result.data})
       } else {
-        commit(types.MESSAGE_BACK, {messageBack: result.data.message});
+        commit(types.LIST_CASH_OUTFLOW, {listCashOutflows: result.data})
       };
      
     })

@@ -1,7 +1,7 @@
 <template>
   <div class="cash-resume is-flex">
     <span>Saldo total em caixa</span>
-    <span class="total" :class="totalClass">R$ 5.145,25</span>
+    <span class="total" :class="totalClass">{{cashTotal.total | reais}}</span>
     <span>{{today}}</span>
   </div>
 </template>
@@ -10,6 +10,9 @@
   import {mapGetters, mapActions} from 'vuex';
 	
   export default {
+    mounted() {
+      this.getCashTotal();
+    },
     data() {
       return {
         today: Moment().format('ddd, DD/MM/YYYY'),
@@ -18,12 +21,12 @@
     },
     computed: {
 			...mapGetters({
-
+        cashTotal: 'cashTotal'
 	    })
 		},
     methods: {
 	    ...mapActions([
-
+        'getCashTotal'
 	    ]),
     }
 	}

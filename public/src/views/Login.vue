@@ -31,8 +31,8 @@
   import {mapGetters, mapActions} from 'vuex';
 	
   export default {
-    created() {
-      this.$store.dispatch('clearCredsLogin');
+    mounted() {
+      this.clearCredsLogin();
     },
     computed: {
       ...mapGetters({
@@ -43,7 +43,8 @@
     methods: {
       ...mapActions([
        'login',
-       'closeMessageBack'
+       'closeMessageBack',
+       'clearCredsLogin'
       ]),
     }
 	}

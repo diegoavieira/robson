@@ -9,4 +9,6 @@ module.exports = app => {
 	app.post('/getCashOutflows', auth.authenticated, cashs.getCashOutflows);
 
 	app.post('/getCashExtract', auth.authenticated, cashs.getCashExtract);
+
+	app.get('/getCashTotal', auth.authenticated, cashs.getCashTotal);
 };

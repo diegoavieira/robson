@@ -22,5 +22,8 @@ export default {
 	},
 	getCashExtract(data) {
 		return Axios.post('/getCashExtract', data);
+	},
+	getCashTotal() {
+		return Axios.get('/getCashTotal');
 	}
 };
