@@ -8,28 +8,28 @@
     </div>
     <div class="panel-block is-flex">
       <span>Total de hoje</span>
-      <span class="subtitle is-4 has-text-dark">{{listCashOutflows.total | reais}}</span>
+      <span class="subtitle is-4 has-text-dark">{{cashExtract.totalOutflow | reais}}</span>
     </div>
     <div class="panel-block">
       <form>
         <div class="field">
           <label class="label">Data</label>
           <div class="control">
-            <input class="input" :class="{'is-danger': errors.has('data')}" type="text" name="data" v-model="newCashOutflow.date" v-validate="'required|date_format:DD/MM/YYYY'" v-my-mask="'99/99/9999'">
+            <input class="input" :class="{'is-danger': errors.has('data')}" type="text" name="data" v-model="newCashOutflow.date" v-validate="'required|date_format:DD/MM/YYYY'" v-my-mask="'99/99/9999'" @focus="closeMessageBack()">
             <p v-if="errors.has('data')" class="help is-danger">{{errors.first('data')}}</p>
           </div>
         </div>
         <div class="field">
           <label class="label">Valor</label>
           <div class="control">
-            <input class="input" :class="{'is-danger': errors.has('valor')}" type="text" name="valor" v-model="newCashOutflow.value" v-validate="'required'">
+            <input class="input" :class="{'is-danger': errors.has('valor')}" type="text" name="valor" v-model="newCashOutflow.value" v-validate="'required'" @focus="closeMessageBack()">
             <p v-if="errors.has('valor')" class="help is-danger">{{errors.first('valor')}}</p>
           </div>
         </div>
         <div class="field">
           <label class="label">Descrição</label>
           <div class="control">
-            <textarea class="textarea" :class="{'is-danger': errors.has('descrição')}" type="text" rows="2" name="descrição" v-model="newCashOutflow.description"  v-validate="'required'"></textarea>
+            <textarea class="textarea" :class="{'is-danger': errors.has('descrição')}" type="text" rows="2" name="descrição" v-model="newCashOutflow.description"  v-validate="'required'" @focus="closeMessageBack()"></textarea>
             <p v-if="errors.has('descrição')" class="help is-danger">{{errors.first('descrição')}}</p>
           </div>
         </div>
@@ -56,12 +56,12 @@
   export default {
     mounted() {
       this.setDateCashOutflow();
-      this.getCashOutflows();
     },
     computed: {
 			...mapGetters({
 				newCashOutflow: 'newCashOutflow',
-        listCashOutflows: 'listCashOutflows'
+        listCashOutflows: 'listCashOutflows',
+        cashExtract: 'cashExtract'
 	    })
 		},
     methods: {
@@ -69,7 +69,7 @@
         'createCashOutflow',
         'clearCashOutflow',
         'setDateCashOutflow',
-        'getCashOutflows'
+        'closeMessageBack'
 	    ]),
     }
 	}

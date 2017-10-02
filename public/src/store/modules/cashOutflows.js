@@ -3,16 +3,12 @@ import Services from '../../utils/services';
 import store from '../';
 
 const state = {
-  newCashOutflow: {},
-  listCashOutflows: {}
+  newCashOutflow: {}
 };
 
 const getters = {
   newCashOutflow: (state) => {
     return state.newCashOutflow
-  },
-  listCashOutflows: (state) => {
-    return state.listCashOutflows
   }
 };
 
@@ -22,14 +18,14 @@ const actions = {
       if (result) {
         let parms = state.newCashOutflow;
         parms.date = Moment(parms.date, 'DD/MM/YYYY').format();
-        parms.cashType = 'outflow';
+        parms.cashType = 'Saída';
         Services.createCash(parms).then(result => {
           if (result.data.success) {
             store.dispatch('clearCashOutflow');
-            store.dispatch('getCashOutflows');
             store.dispatch('getCashExtract');
-            store.dispatch('getCashTotal');
+            commit(types.MESSAGE_BACK, {messageBack: result.data.message});
           } else {
+            store.dispatch('setDateCashOutflow');
             commit(types.MESSAGE_BACK, {messageBack: result.data.message});
           };
         });
@@ -46,22 +42,6 @@ const actions = {
   },
   setDateCashOutflow({commit, state}) {
     commit(types.NEW_CASH_OUTFLOW, {newCashOutflow: {date: Moment().format('DD/MM/YYYY')}});
-  },
-  getCashOutflows({commit, state}, payload) {
-    let parms;
-    if (payload) {
-      parms = payload;
-    } else {
-      parms = {dateInit: Moment().startOf('day'), dateEnd: Moment().endOf('day')}
-    }
-    Services.getCashOutflows(parms).then(result => {
-      if (result.data.success) {
-        commit(types.LIST_CASH_OUTFLOW, {listCashOutflows: result.data})
-      } else {
-        commit(types.LIST_CASH_OUTFLOW, {listCashOutflows: result.data})
-      };
-     
-    })
   }
 };
 
@@ -71,9 +51,6 @@ const mutations = {
   },
   [types.NEW_CASH_OUTFLOW_CLEAR] (state, {newCashOutflow}) {
     state.newCashOutflow = newCashOutflow;
-  },
-  [types.LIST_CASH_OUTFLOW] (state, {listCashOutflows}) {
-    state.listCashOutflows = listCashOutflows;
   }
 };
 

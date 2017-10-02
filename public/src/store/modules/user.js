@@ -34,6 +34,7 @@ const actions = {
             };
             commit(types.ISLOGGED, {isLogged: true});
             commit(types.USER, {user: result.data.data});
+            store.dispatch('getCashExtract');
             router.push('/caixa');
           } else {
             console.log(result.data.message)

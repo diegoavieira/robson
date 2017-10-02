@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true
     },
     cashType: {
-      type: DataTypes.ENUM('receipt', 'outflow'),
+      type: DataTypes.ENUM('Entrada', 'Saída'),
       allowNull: false
     },
     date: {

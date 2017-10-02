@@ -20,7 +20,7 @@
         </thead>
         <tbody>
           <tr v-for="cash in listCashExtract">
-            <td class="has-text-info" v-if="cash.cashType == 'receipt'">{{cash.value | reais}} <i class="fa fa-level-up"></i></td>
+            <td class="has-text-info" v-if="cash.cashType == 'Entrada'">{{cash.value | reais}} <i class="fa fa-level-up"></i></td>
             <td class="has-text-dark" v-else>{{cash.value | reais}} <i class="fa fa-level-down"></i></td>
             <td>{{cash.description}}</td>
           </tr>
@@ -34,18 +34,16 @@
   import {mapGetters, mapActions} from 'vuex';
 	
   export default {
-    mounted() {
-      this.getCashExtract();
-    },
     computed: {
 			...mapGetters({
         cashExtract: 'cashExtract',
         listCashExtract: 'listCashExtract',
+        cashExtract: 'cashExtract'
 	    })
 		},
     methods: {
 	    ...mapActions([
-        'getCashExtract'
+        
 	    ]),
     }
 	}
