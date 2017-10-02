@@ -24,12 +24,7 @@ const actions = {
       parms = {dateInit: Moment().startOf('day'), dateEnd: Moment().endOf('day')}
     }
     Services.getCashExtract(parms).then(result => {
-        commit(types.CASH_EXTRACT, {cashExtract: result.data});
-      console.log(result)
-      // if (result.data.success) {
-      // } else {
-      //   commit(types.CASH_EXTRACT, {cashExtract: result.data});
-      // };
+      commit(types.CASH_EXTRACT, {cashExtract: result.data});
     });
   }
 };

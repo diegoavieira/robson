@@ -34,9 +34,7 @@ exports.login = (req, res) => {
           login: user.login,
           password: user.password
         };
-        const token = jwt.sign(payload, jwtSecret, {
-          expiresIn: '10h'
-        });
+        const token = jwt.sign(payload, jwtSecret);
         res.status(200).json({
           success: true,
           token: token,

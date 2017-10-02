@@ -8,7 +8,7 @@
     </div>
     <div class="panel-block is-flex">
       <span>Total líquido de hoje</span>
-      <span class="subtitle is-4 has-text-warning">{{cashExtract.totalLiquid | reais}}</span>
+      <span class="subtitle is-4" :class="totalLiquidClass">{{cashExtract.totalLiquid | reais}}</span>
     </div>
     <div class="panel-block">
       <table class="table is-fullwidth is-striped">
@@ -39,7 +39,14 @@
         cashExtract: 'cashExtract',
         listCashExtract: 'listCashExtract',
         cashExtract: 'cashExtract'
-	    })
+	    }),
+      totalLiquidClass() {
+        if (this.cashExtract.totalLiquid > 0) {
+          return 'has-text-warning';
+        } else {
+          return 'has-text-danger';
+        }
+      }
 		},
     methods: {
 	    ...mapActions([

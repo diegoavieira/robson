@@ -14,16 +14,10 @@ export default {
 	createCash(data) {
 		return Axios.post('/createCash', data);
 	},
-	// getCashReceipts(data) {
-	// 	return Axios.post('/getCashReceipts', data);
-	// },
-	// getCashOutflows(data) {
-	// 	return Axios.post('/getCashOutflows', data);
-	// },
 	getCashExtract(data) {
 		return Axios.post('/getCashExtract', data);
 	},
-	// getCashTotal() {
-	// 	return Axios.get('/getCashTotal');
-	// }
+	getCashTotal() {
+		return Axios.get('/getCashTotal');
+	}
 };

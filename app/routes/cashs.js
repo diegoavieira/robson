@@ -4,11 +4,7 @@ module.exports = app => {
 
 	app.post('/createCash', auth.authenticated, cashs.createCash);
 
-	// app.post('/getCashReceipts', auth.authenticated, cashs.getCashReceipts);
-
-	// app.post('/getCashOutflows', auth.authenticated, cashs.getCashOutflows);
-
 	app.post('/getCashExtract', auth.authenticated, cashs.getCashExtract);
 
-	// app.get('/getCashTotal', auth.authenticated, cashs.getCashTotal);
+	app.get('/getCashTotal', auth.authenticated, cashs.getCashTotal);
 };

@@ -25,13 +25,21 @@ exports.getCashExtract = (req, res) => {
           cashType: 'Entrada',
           date: {$gte: parms.dateInit, $lte: parms.dateEnd}
         }
-      }).then(sumReceipt => {
+      }).then(sumReceiptResult => {
+        let sumReceipt = 0;
+        if (sumReceiptResult) {
+          sumReceipt = sumReceiptResult
+        } 
         Models.Cashs.sum('value', {
           where: {
             cashType: 'Saída',
             date: {$gte: parms.dateInit, $lte: parms.dateEnd}
           }
-        }).then(sumOutflow => {
+        }).then(sumOutflowResult => {
+          let sumOutflow = 0;
+          if (sumOutflowResult) {
+            sumOutflow = sumOutflowResult
+          } 
           res.status(201).json({
             success: true,
             data: result,
@@ -55,5 +63,31 @@ exports.getCashExtract = (req, res) => {
   });
 };
 
-
-
+exports.getCashTotal = (req, res) => {
+  Models.Cashs.sum('value', {
+    where: {
+      cashType: 'Entrada'
+    }
+  }).then(sumReceiptResult => {
+    let sumReceipt = 0;
+    if (sumReceiptResult) {
+      sumReceipt = sumReceiptResult
+    } 
+    Models.Cashs.sum('value', {
+      where: {
+        cashType: 'Saída'
+      }
+    }).then(sumOutflowResult => {
+      let sumOutflow = 0;
+      if (sumOutflowResult) {
+        sumOutflow = sumOutflowResult
+      } 
+      res.status(201).json({
+        success: true,
+        total: sumReceipt - sumOutflow
+      });
+    }).catch(error => {
+      res.status(206).json({success: false, message: error.message});
+    })
+  });
+}

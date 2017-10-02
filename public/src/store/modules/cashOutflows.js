@@ -23,6 +23,7 @@ const actions = {
           if (result.data.success) {
             store.dispatch('clearCashOutflow');
             store.dispatch('getCashExtract');
+            store.dispatch('getCashTotal');
             commit(types.MESSAGE_BACK, {messageBack: result.data.message});
           } else {
             store.dispatch('setDateCashOutflow');
