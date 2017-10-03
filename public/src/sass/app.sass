@@ -68,14 +68,23 @@ th, strong
 	align-items: center;
 	justify-content: space-between;
 
+.flex-wrap-start-between
+	display: flex;
+	flex-flow: row wrap;
+	align-items: flex-start;
+	justify-content: space-between;
+
 .top-bar
 	padding: 0.5rem 0;
 	background-color: $primary;
 	margin-bottom: 1rem;
+	color: #fff;
 	.container
 		@extend .flex-wrap-center-between;
 	img
 		max-height: 1.5rem;
+	span
+		margin-right: 1rem;
 	a
 		color: #fff;
 		&:hover
@@ -125,18 +134,29 @@ th, strong
 		flex-grow: 1;
 		margin: 0 0.75em 0.75em 0;
 
-.is-flex
-	@extend .flex-wrap-center-between;
-
 .cash-resume
-	@media #{$mediaMobile}
-		span
-			width: 100%;
-			margin-bottom: 0.5rem;
-			&:last-child
-				order: -2;
-
+	@extend .flex-wrap-center-between;
+	flex-direction: column;
+	font-size: 1rem;
+	border: 1px solid $grey-lighter;
+	background-color: $white-ter;
+	border-radius: 3px;
+	padding: 0.5rem 0.75rem;
 	.total 
 		font-size: 1.5rem;
-		@media #{$mediaMobile}
-			margin: 0;
+
+.form-flex
+	@extend .flex-wrap-start-between;
+	.field
+		width: 17%;
+		&:not(:last-child)
+			margin-bottom: 0;
+	.description
+		width: 35%;
+	.clear-btn
+		width: 10%
+	@media #{$mediaMobile}
+		.field
+			width: 100%;
+			&:not(:last-child)
+				margin-bottom: 0.75rem;

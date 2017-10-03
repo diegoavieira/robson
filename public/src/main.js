@@ -48,6 +48,22 @@ Vue.directive('myMask', {
   }
 });
 
+Vue.directive('myMaskMoney', {
+  bind(el, binding) {
+    let mask = {
+      autoUnmask: true,
+      numericInput: true,
+      prefix: binding.value,
+      radixPoint: ',',
+      groupSeparator: '.',
+      digits: 2,
+      autoGroup: true,
+      rightAlign: false,
+    };
+    InputMask('currency', mask).mask(el);
+  }
+});
+
 new Vue({
 	router,
 	store,

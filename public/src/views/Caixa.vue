@@ -1,21 +1,9 @@
 <template>
-  <div class="cash-register">
-    <div class="columns">
-      <div class="column">
-        <CashResume></CashResume>
-      </div>
-    </div>
-    <div class="columns">
-      <div class="column">
-        <CashReceipts></CashReceipts>
-      </div>
-      <div class="column">
-        <CashOutflows></CashOutflows>
-      </div>
-      <div class="column">
-        <CashExtract></CashExtract>
-      </div>
-    </div>
+  <div>
+    <CashResume></CashResume>
+    <CashReceipts></CashReceipts>
+    <CashOutflows></CashOutflows>
+    <CashExtract></CashExtract>
   </div>
 </template>
 

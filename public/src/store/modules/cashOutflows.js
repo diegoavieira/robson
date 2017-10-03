@@ -19,6 +19,8 @@ const actions = {
         let parms = state.newCashOutflow;
         parms.date = Moment(parms.date, 'DD/MM/YYYY').format();
         parms.cashType = 'Saída';
+        let valueNum = parms.value.replace(',', '.');
+        parms.value = Number(valueNum);
         Services.createCash(parms).then(result => {
           if (result.data.success) {
             store.dispatch('clearCashOutflow');

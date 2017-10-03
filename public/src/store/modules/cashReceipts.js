@@ -19,6 +19,8 @@ const actions = {
         let parms = state.newCashReceipt;
         parms.date = Moment(parms.date, 'DD/MM/YYYY').format();
         parms.cashType = 'Entrada';
+        let valueNum = parms.value.replace(',', '.');
+        parms.value = Number(valueNum);
         Services.createCash(parms).then(result => {
           if (result.data.success) {
             store.dispatch('clearCashReceipt');
