@@ -17,66 +17,54 @@ const routes = [
       }
     }
   },
-  // {
-  //   path: '/dashboard',
-  //   name: 'dashboard',
-  //   component: require('../views/Dashboard.vue'),
-  //   beforeEnter: (to, from, next) => {
-  //     if (store.getters.isLogged) {
-  //       next();
-  //     } else {
-  //       next(false);
-  //     }
-  //   }
-  // },
-  // {
-  //   path: '/comercial',
-  //   name: 'comercial',
-  //   component: require('../views/Comercial.vue'),
-  //   beforeEnter: (to, from, next) => {
-  //     if (store.getters.isLogged && store.getters.employee.permissions.comercial) {
-  //       next();
-  //     } else {
-  //       next(false);
-  //     }
-  //   }
-  // },
-  // {
-  //   path: '/financeiro',
-  //   name: 'financeiro',
-  //   component: require('../views/Financeiro.vue'),
-  //   beforeEnter: (to, from, next) => {
-  //     if (store.getters.isLogged && store.getters.employee.permissions.financeiro) {
-  //       next();
-  //     } else {
-  //       next(false);
-  //     }
-  //   }
-  // },
-  // {
-  //   path: '/operacao',
-  //   name: 'operacao',
-  //   component: require('../views/Operacao.vue'),
-  //   beforeEnter: (to, from, next) => {
-  //     if (store.getters.employee.permissions.operacao) {
-  //       next();
-  //     } else {
-  //       next(false);
-  //     }
-  //   }
-  // },
-  // {
-  //   path: '/gerencia',
-  //   name: 'gerencia',
-  //   component: require('../views/Gerencia.vue'),
-  //   beforeEnter: (to, from, next) => {
-  //     if (store.getters.isLogged && store.getters.employee.permissions.gerencia) {
-  //       next();
-  //     } else {
-  //       next(false);
-  //     }
-  //   }
-  // },
+  {
+    path: '/caixa',
+    name: 'caixa',
+    component: require('../views/Caixa.vue'),
+    beforeEnter: (to, from, next) => {
+      if (store.getters.isLogged) {
+        next();
+      } else {
+        next(false);
+      }
+    }
+  },
+  {
+    path: '/estoque',
+    name: 'estoque',
+    component: require('../views/Estoque.vue'),
+    beforeEnter: (to, from, next) => {
+      if (store.getters.isLogged) {
+        next();
+      } else {
+        next(false);
+      }
+    }
+  },
+  {
+    path: '/relatorios',
+    name: 'relatorios',
+    component: require('../views/Relatorios.vue'),
+    beforeEnter: (to, from, next) => {
+      if (store.getters.isLogged) {
+        next();
+      } else {
+        next(false);
+      }
+    }
+  },
+  {
+    path: '/fornecedores',
+    name: 'fornecedores',
+    component: require('../views/Fornecedores.vue'),
+    beforeEnter: (to, from, next) => {
+      if (store.getters.isLogged) {
+        next();
+      } else {
+        next(false);
+      }
+    }
+  },
   {
     path: '*',
     beforeEnter: (to, from, next) => {

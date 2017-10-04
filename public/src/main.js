@@ -6,34 +6,21 @@ import store from './store';
 import Moment from 'moment';
 import VeeValidate, {Validator} from 'vee-validate';
 import ptBr from './assets/pt_BR';
-import VueTheMask from 'vue-the-mask';
+import InputMask from 'inputmask';
 import Lodash from 'lodash';
 
 window.Moment = Moment;
 Moment.locale('pt_BR');
 
 Validator.addLocale(ptBr);
-Validator.installDateTimeValidators(Moment);
-
 Vue.use(VeeValidate, {
 	locale: 'pt_BR',
 	events: 'input'
 });
-Vue.use(VueTheMask);
 
-Vue.filter('number', value => {
-  return Number(value).toLocaleString('pt-BR');
-});
+window.InputMask = InputMask;
 
-Vue.filter('capitalize', value => {
-  return value.replace(/\w\S*/g, txt => {
-  	return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-  });
-});
-
-Vue.filter('numberFix', value => {
-  return Number(value).toFixed();
-});
+window._ = Lodash;
 
 Vue.filter('reais', value => {
 	let options = {
@@ -48,15 +35,34 @@ Vue.filter('date', value => {
   return Moment(value).format('DD/MM/YYYY');
 });
 
-Vue.filter('cnpj', value => {
-	return value.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/g, '\$1.\$2.\$3\/\$4\-\$5');
+Vue.directive('myMask', {
+  bind(el, binding) {
+    let mask = {
+      mask: binding.value,
+      showMaskOnFocus: false,
+      showMaskOnHover: false,
+      clearIncomplete: true,
+      positionCaretOnClick: 'none',
+    };
+    InputMask(mask).mask(el);
+  }
 });
 
-Vue.filter('phone', value => {
-  return value.replace(/^(\d{2})(\d)/g,'($1) $2').replace(/(\d)(\d{4})$/,'$1-$2'); 
+Vue.directive('myMaskMoney', {
+  bind(el, binding) {
+    let mask = {
+      autoUnmask: true,
+      numericInput: true,
+      prefix: binding.value,
+      radixPoint: ',',
+      groupSeparator: '.',
+      digits: 2,
+      autoGroup: true,
+      rightAlign: false,
+    };
+    InputMask('currency', mask).mask(el);
+  }
 });
-
-window._ = Lodash;
 
 new Vue({
 	router,

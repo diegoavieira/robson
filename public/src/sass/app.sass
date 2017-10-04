@@ -1,8 +1,210 @@
-$family-primary: 'Ubuntu', sans-serif;
+$family-primary: "Ubuntu", sans-serif;
+$primary: #284a4a;
+$primary-invert: #fff;
+$success: #507642;
+$info: #336699;
+$danger: #c14a4a;
+$warning: #e4823d;
+$dark: #ad6c89;
+$link-hover: $primary-invert;
+
+$mediaMobile: 'screen and (max-width: 768px)';
+$mediaSmall: 'screen and (max-width: 425px)';
+$mediaSmallMedium: 'screen and (max-width: 736px)';
+$mediaTablet: 'screen and (min-width: 769px) and (max-width: 1007px)';
+$mediaDesktop: 'screen and (max-width: 1024px)';
 
 @import "./node_modules/bulma/bulma";
 
 html
-  overflow-y: auto;
+  background: $white-ter;
+  font-size: 18px;
+  @media #{$mediaMobile}
+		font-size: 16px;
 
+body
+	line-height: 1.2;
 
+form
+	width: 100%;
+
+p
+	margin-bottom: 0.5rem;
+
+th, strong 
+	font-weight: 500;
+
+.table
+	margin-bottom: 0;
+	th, td 
+		vertical-align: middle;
+	thead
+		th, td
+			color: inherit;
+			padding-top: 0;
+			font-weight: inherit;
+		tr
+			&:hover
+				background-color: transparent;
+
+.textarea
+	resize: none;
+
+.main
+	padding: 0 0 1rem 0;
+	height: calc(100vh - 40px);
+
+.container
+	height: 100%;
+	@media #{$mediaDesktop}
+		padding: 0 1rem;
+
+.button.is-warning
+	color: #fff;
+	&:hover, &:active, &:focus
+		color: #fff;
+
+.flex-wrap-center-between
+	display: flex;
+	flex-flow: row wrap;
+	align-items: center;
+	justify-content: space-between;
+
+.flex-wrap-start-between
+	display: flex;
+	flex-flow: row wrap;
+	align-items: flex-start;
+	justify-content: space-between;
+
+.top-bar
+	padding: 0.5rem 0;
+	background-color: $primary;
+	margin-bottom: 1rem;
+	color: #fff;
+	.container
+		@extend .flex-wrap-center-between;
+	img
+		max-height: 1.5rem;
+	span
+		margin-right: 1rem;
+	a
+		color: #fff;
+		&:hover
+			color: $primary-invert;
+
+.tabs
+	@media #{$mediaSmall}
+		li
+			flex-grow: 1;
+		a
+			flex-direction: column;
+			font-size: 12px;
+			padding: 0.5rem 0;
+		.icon
+			font-size: 1.3rem;
+			height: inherit;
+			width: inherit;
+			margin-bottom: 0.2rem;
+			border-radius: 0 3px 3px 3px;
+		.icon:first-child
+			margin-right: 0;
+	
+.tabs:not(:last-child)
+	margin-bottom: 0;
+
+.tabs-content
+	background-color: #fff;
+	border: 1px solid $grey-lighter;
+	border-top: none;
+	padding: 1.5rem;
+	@media #{$mediaMobile}
+		padding: 1rem;
+
+.panel-block
+	padding: 0.75rem;
+	&:last-child
+		border-radius: 0 0 3px 3px;
+
+.label
+	color: inherit;
+	font-weight: inherit;
+
+.field-flex
+	@extend .flex-wrap-center-between
+	margin: 0 -0.75em -0.75em 0;
+	.field
+		flex-grow: 1;
+		margin: 0 0.75em 0.75em 0;
+
+.cash-resume
+	@extend .flex-wrap-center-between;
+	flex-direction: column;
+	font-size: 1rem;
+	border: 1px solid $grey-lighter;
+	background-color: $white-ter;
+	border-radius: 3px;
+	padding: 0.5rem 0.75rem;
+	.total 
+		font-size: 1.5rem;
+
+.form-flex
+	@extend .flex-wrap-start-between;
+	.field
+		width: 17%;
+		&:not(:last-child)
+			margin-bottom: 0;
+	.description
+		width: 35%;
+	.clear-btn
+		width: 10%
+	@media #{$mediaMobile}
+		.field
+			width: 100%;
+			&:not(:last-child)
+				margin-bottom: 0.75rem;
+
+.modal
+	.modal-message
+		@extend .flex-wrap-center-between;
+		flex-direction: column;
+		max-width: 400px;
+		width: 90%;
+		padding: 1rem;
+		text-align: center;
+		background-color: $white-ter;
+		border: 1px solid $grey-lighter;
+		position: absolute;
+		left: 50%;
+		top: 40%;
+		transform: translate(-50%, -50%);
+		h1
+			font-weight: 400;
+			color: $primary;
+			font-size: 1.25rem;
+			margin-bottom: 0.5rem;
+		.fa
+			font-size: 2rem;
+			margin: 0.3rem 0 1.5rem;
+		.success
+			color: $success;
+		.danger
+			color: $danger;
+		.info
+			color: $info;
+		.warning
+			color: $warning;
+		p
+			margin-bottom: 1rem;
+			font-size: 1rem;
+
+.login
+	max-width: 280px;
+	width: 100%;
+	position: absolute;
+	top: 40%;
+	left: 50%
+	transform: translate(-50%, -50%);
+	img
+		display: block;
+		width: 160px;
+		margin: 0 auto 2rem auto;
