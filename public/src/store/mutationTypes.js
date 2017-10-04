@@ -8,4 +8,6 @@ export const NEW_CASH_OUTFLOW = 'NEW_CASH_OUTFLOW';
 export const NEW_CASH_OUTFLOW_CLEAR = 'NEW_CASH_OUTFLOW_CLEAR';
 export const CASH_EXTRACT = 'CASH_EXTRACT';
 export const CASH_TOTAL = 'CASH_TOTAL';
+export const MODAL = 'MODAL';
+
 

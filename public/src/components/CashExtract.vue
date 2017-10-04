@@ -1,10 +1,10 @@
 <template>
   <div class="panel">
-    <div class="panel-heading cash-header">
-      <span class="icon has-text-grey-lighter">
+    <div class="panel-heading has-text-dark">
+      <span class="icon">
         <i class="fa fa-list"></i>
       </span>
-      <span class="has-text-dark">Extrato de hoje</span>
+      <span>Extrato de hoje</span>
     </div>
     <div class="panel-block">
       <table class="table is-fullwidth is-striped">

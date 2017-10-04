@@ -1,6 +1,7 @@
 <template>
-  <div class="columns is-centered">
-    <div class="column is-one-quarter-desktop is-one-quarter-tablet">
+  <div class="columns">
+    <div class="column login">
+      <img src="../assets/logo-robson-dark.svg">
       <form>
         <div class="field">
           <label class="label">Login</label>

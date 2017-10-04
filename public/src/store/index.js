@@ -10,10 +10,11 @@ import cashReceipts from './modules/cashReceipts';
 import cashOutflows from	'./modules/cashOutflows';
 import cashExtract from	'./modules/cashExtract';
 import cashTotal from	'./modules/cashTotal';
+import modal from './modules/modal';
 
 export default new Vuex.Store({
 	modules: {
-		user, messageBack, cashReceipts, cashOutflows, cashExtract, cashTotal
+		user, messageBack, cashReceipts, cashOutflows, cashExtract, cashTotal, modal
 	},
 	strict: debug
 });

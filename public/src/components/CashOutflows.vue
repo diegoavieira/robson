@@ -1,10 +1,10 @@
 <template>
   <div class="panel">
-    <div class="panel-heading cash-header">
-      <span class="icon has-text-grey-lighter">
+    <div class="panel-heading has-text-warning">
+      <span class="icon">
         <i class="fa fa-arrow-circle-left"></i>
       </span>
-      <span class="has-text-warning">Cadastrar saída</span>
+      <span>Cadastrar saída</span>
     </div>
     <div class="panel-block">
       <form class="form-flex">

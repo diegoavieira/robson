@@ -26,10 +26,25 @@ const actions = {
             store.dispatch('clearCashOutflow');
             store.dispatch('getCashExtract');
             store.dispatch('getCashTotal');
-            commit(types.MESSAGE_BACK, {messageBack: result.data.message});
+            commit(types.MODAL, {
+              modal: {
+                open: true,
+                icon: 'fa-arrow-circle-left warning',
+                title: result.data.message,
+                button: true
+              }
+            });
           } else {
             store.dispatch('setDateCashOutflow');
-            commit(types.MESSAGE_BACK, {messageBack: result.data.message});
+            commit(types.MODAL, {
+              modal: {
+                open: true,
+                icon: 'fa-exclamation danger',
+                title: 'Ooops!',
+                message: 'Ocorreu um erro. Contate o suporte.',
+                button: true
+              }
+            });
           };
         });
       }

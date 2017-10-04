@@ -52,8 +52,10 @@ th, strong
 
 .main
 	padding: 0 0 1rem 0;
+	height: calc(100vh - 40px);
 
 .container
+	height: 100%;
 	@media #{$mediaDesktop}
 		padding: 0 1rem;
 
@@ -160,3 +162,49 @@ th, strong
 			width: 100%;
 			&:not(:last-child)
 				margin-bottom: 0.75rem;
+
+.modal
+	.modal-message
+		@extend .flex-wrap-center-between;
+		flex-direction: column;
+		max-width: 400px;
+		width: 90%;
+		padding: 1rem;
+		text-align: center;
+		background-color: $white-ter;
+		border: 1px solid $grey-lighter;
+		position: absolute;
+		left: 50%;
+		top: 40%;
+		transform: translate(-50%, -50%);
+		h1
+			font-weight: 400;
+			color: $primary;
+			font-size: 1.25rem;
+			margin-bottom: 0.5rem;
+		.fa
+			font-size: 2rem;
+			margin: 0.3rem 0 1.5rem;
+		.success
+			color: $success;
+		.danger
+			color: $danger;
+		.info
+			color: $info;
+		.warning
+			color: $warning;
+		p
+			margin-bottom: 1rem;
+			font-size: 1rem;
+
+.login
+	max-width: 280px;
+	width: 100%;
+	position: absolute;
+	top: 40%;
+	left: 50%
+	transform: translate(-50%, -50%);
+	img
+		display: block;
+		width: 160px;
+		margin: 0 auto 2rem auto;
