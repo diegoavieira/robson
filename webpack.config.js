@@ -1,9 +1,10 @@
 let webpack = require('webpack');
 let path = require('path');
+require('babel-polyfill');
 
 module.exports = {
-	entry: './public/src/main.js',
-	output: {
+  entry: ['babel-polyfill', './public/src/main.js'],
+  output: {
     path: path.resolve(__dirname, './public/dist'),
     publicPath: '/dist/',
     filename: 'build.js'
@@ -41,10 +42,17 @@ module.exports = {
     hints: false
   },
   devtool: '#eval-source-map',
-  plugins: []
+  plugins: [
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jquery: 'jquery',
+      'window.jQuery': 'jquery',
+      jQuery: 'jquery'
+    })
+  ]
 };
 
-if (process.env.NODE_ENV === 'production') {
+if(process.env.NODE_ENV === 'production') {
   module.exports.devtool = '#source-map';
   module.exports.plugins.push(
     new webpack.optimize.UglifyJsPlugin({
@@ -61,4 +69,4 @@ if (process.env.NODE_ENV === 'production') {
       }
     })
   );
-};
+}
