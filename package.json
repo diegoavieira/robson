@@ -4,11 +4,11 @@
   "description": "Controle Interno Robson Escapamentos",
   "main": "server.js",
   "scripts": {
-    "start": "npm run build && npm run server",
-    "build": "cross-env NODE_ENV=production webpack --hide-modules --progress",
-    "server": "nodemon --exec babel-node server.js",
-    "front": "cross-env NODE_ENV=development webpack --watch --hide-modules",
-    "unit": "cross-env NODE_ENV=test karma start public/test/unit/karma.conf.js --single-run"
+    "start": "NODE_ENV=production npm run build && NODE_ENV=production npm run server",
+    "build": "webpack --hide-modules --progress",
+    "server": "babel-node server.js",
+    "front": "webpack --watch --hide-modules",
+    "unit": "NODE_ENV=test karma start public/test/unit/karma.conf.js --single-run"
   },
   "author": "Diego A. Vieira <diegoavieira@gmail.com>",
   "license": "private",
